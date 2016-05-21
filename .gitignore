@@ -1,0 +1,9 @@
+credentials.*
+*.lock
+
+*.xcworkspace
+
+.idea/
+Pods/
+Products/
+Frameworks/
