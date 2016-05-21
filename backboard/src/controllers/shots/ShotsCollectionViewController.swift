@@ -7,6 +7,8 @@ import Foundation
 import UIKit
 
 class ShotsCollectionViewController: UICollectionViewController {
+    private let delegate = CollectionViewDelegate()
+    private let dataSource = CollectionViewDataSource()
 
     convenience init(title: String) {
         let layout = UICollectionViewFlowLayout()
@@ -18,7 +20,37 @@ class ShotsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView?.backgroundColor = Colors.White
+        collectionView?.delegate = delegate
+        collectionView?.dataSource = dataSource
+        collectionView?.backgroundColor = Colors.White
+
+        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    }
+
+}
+
+@objc private class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
+
+}
+
+private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+
+    func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    @objc func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+
+    @objc func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
+        cell.backgroundColor = Colors.Charcoal
+        return cell
     }
 
 }
