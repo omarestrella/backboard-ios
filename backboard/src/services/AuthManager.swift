@@ -22,6 +22,8 @@ class AuthManager {
     var clientSecret: String? = ""
     var clientAccessToken: String? = ""
 
+    var userAccessToken = ""
+
     let redirectUri = "dribbble://auth"
 
     init() {
@@ -72,8 +74,13 @@ class AuthManager {
         ]
         RequestManager
             .request(.POST, "https://dribbble.com/oauth/token", parameters: parameters)
-            .then { (json) -> Void in
-                log.debug("\(json)")
+            .then { json -> Void in
+                log.debug("Successful authentication: \(json)")
+
+                if let token = json["access_token"].string {
+                    self.userAccessToken = token
+                }
+
                 self.delegate?.authenticated()
             }.recover { err in
                 log.error("\(err)")

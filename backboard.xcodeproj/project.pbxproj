@@ -30,6 +30,7 @@
 		DD5F9E67A378B11C0AE46148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9D06F54186E3E00A44C7 /* LaunchScreen.storyboard */; };
 		DD5F9ECD3B4CA935ACA0ECE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F987D49CC27F4C1347C42 /* Info.plist */; };
 		DD5F9F8E74057004725696AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BE11EEDEF197DEAF36C /* ViewController.swift */; };
+		DD5F9FC7DF4F4C42530989CB /* ShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BF26C2997DBE4DDFB56 /* ShotCollectionViewCell.swift */; };
 		DD5F9FCA974D0705A8973B59 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F93BBD4C80BF093492072 /* Store.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		DD5F9AC9A5D08E7AB3DBA025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD5F9BD21ED607FAC0A81D9D /* ShotsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotsCollectionViewController.swift; sourceTree = "<group>"; };
 		DD5F9BE11EEDEF197DEAF36C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DD5F9BF26C2997DBE4DDFB56 /* ShotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD5F9C6EF29784864F74B2E3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD5F9D1165FF612998C7A732 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 			path = services;
 			sourceTree = "<group>";
 		};
+		DD5F94ED0BB4309319D8AD43 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F9A0B6829874580EEB7C4 /* shots */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		DD5F95432BF63B55D043BA4F /* backboardTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,14 @@
 			children = (
 				DD5F9BD21ED607FAC0A81D9D /* ShotsCollectionViewController.swift */,
 				DD5F959AC326EE7C3B6697F0 /* ShotsNavigationController.swift */,
+			);
+			path = shots;
+			sourceTree = "<group>";
+		};
+		DD5F9A0B6829874580EEB7C4 /* shots */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F9BF26C2997DBE4DDFB56 /* ShotCollectionViewCell.swift */,
 			);
 			path = shots;
 			sourceTree = "<group>";
@@ -213,6 +231,7 @@
 				DD5F9411675823283B47FE1B /* services */,
 				DD5F98D0F4EF6CD9C72948BA /* utils */,
 				DD5F9E46D1F6EC7FA81023E3 /* controllers */,
+				DD5F94ED0BB4309319D8AD43 /* views */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -383,6 +402,7 @@
 				DD5F9C26C46C25467CB87CA1 /* MainTabBarController.swift in Sources */,
 				DD5F919800EFBC1579C818AD /* ShotsCollectionViewController.swift in Sources */,
 				DD5F93192F0D6B97E9E4A0F1 /* ShotsNavigationController.swift in Sources */,
+				DD5F9FC7DF4F4C42530989CB /* ShotCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

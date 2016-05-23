@@ -6,6 +6,9 @@
 import Foundation
 import UIKit
 
+import PromiseKit
+import SwiftyJSON
+
 class ShotsCollectionViewController: UICollectionViewController {
     private let delegate = CollectionViewDelegate()
     private let dataSource = CollectionViewDataSource()
@@ -25,6 +28,10 @@ class ShotsCollectionViewController: UICollectionViewController {
         collectionView?.backgroundColor = Colors.White
 
         collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+
+        dataSource.loadShots().then { (shots) -> Void in
+            self.collectionView?.reloadData()
+        }
     }
 
 }
@@ -34,6 +41,18 @@ class ShotsCollectionViewController: UICollectionViewController {
 }
 
 private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    let store = Store.instance
+
+    func loadShots() -> Promise<AnyObject> {
+        log.debug("Loading Shots")
+
+        let promise = store.find(Shot)
+        promise.then { data in
+            log.debug("\(data)")
+        }
+
+        return promise
+    }
 
     func collectionView(collectionView: UICollectionView, canMoveItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false

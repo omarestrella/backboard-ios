@@ -11,7 +11,7 @@ import SwiftyJSON
 class Empty {}
 
 class Model: NSObject {
-    class var JSONInboundMapping: Dictionary<String, String> {
+    class var JSONInboundMapping: [String: String] {
         return [:]
     }
 
@@ -21,7 +21,7 @@ class Model: NSObject {
 
     var data: JSON = JSON([:])
 
-    init(_ json: JSON, _ mappings: Dictionary<String, String>) {
+    init(_ json: JSON, _ mappings: [String: String]) {
         super.init()
 
         for (from, to) in mappings {
@@ -31,7 +31,7 @@ class Model: NSObject {
         self.data = json
     }
 
-    class func extract(model: Model.Type, response: Response<AnyObject, NSError>, type: String) -> AnyObject {
+    class func extract(model: Model.Type, response: JSON, type: String) -> AnyObject {
         switch type {
         case "find":
             return model.extractFind(response)
@@ -42,11 +42,11 @@ class Model: NSObject {
         }
     }
 
-    class func extractFind(response: Response<AnyObject, NSError>) -> AnyObject {
+    class func extractFind(response: JSON) -> AnyObject {
         return Empty()
     }
 
-    class func extractFindMany(response: Response<AnyObject, NSError>) -> [AnyObject] {
+    class func extractFindMany(response: JSON) -> [AnyObject] {
         return [Empty()]
     }
 

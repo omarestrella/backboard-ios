@@ -32,22 +32,22 @@ class Store {
         var url = Store.baseURLString
         if let argument = extra as? String {
             url = "\(Store.baseURLString)\(model.APIEndpoint)/\(argument)"
-        } else if let argument = extra as? Dictionary<String, Any> {
+        } else if let argument = extra as? [String: Any] {
             // search...
         } else {
             url = "\(Store.baseURLString)\(model.APIEndpoint)"
         }
 
         return Promise { fulfill, _ in
-            let request = RequestManager.sharedManager.request(.GET, url)
-            request.responseJSON { response in
+            let request = RequestManager.request(.GET, url).then { (json) -> Void in
                 var type = "find"
-                let json = JSON(data: response.data!)
                 if let data = json.array {
                     type = "findMany"
                 }
 
-                fulfill(Model.extract(model, response: response, type: type))
+                log.debug("Successful store query for: \(model), \(extra)")
+
+                fulfill(Model.extract(model, response: json, type: type))
             }
         }
     }

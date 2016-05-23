@@ -9,36 +9,41 @@ import Alamofire
 import SwiftyJSON
 
 class Shot: Model {
-    dynamic var id = ""
+    dynamic var id = 0
 
-    dynamic var cmc = 0
-    dynamic var cost = ""
+    dynamic var title = ""
+    dynamic var shotDescription = ""
 
-    dynamic var types = []
-    dynamic var colors = []
+    dynamic var width = 0
+    dynamic var height = 0
 
-    dynamic var text = ""
+    dynamic var images: [String: String] = [:]
 
-    dynamic var formats = [:]
-
-    dynamic var editions = []
+    dynamic var viewsCount = 0
+    dynamic var likesCount = 0
 
     init(_ json: JSON) {
         super.init(json, Shot.JSONInboundMapping)
+    }
+
+    override class var JSONInboundMapping: [String: String] {
+        return [
+            "views_count": "viewsCount",
+            "likes_count": "likesCount",
+            "description": "shotDescription"
+        ]
     }
 
     override class var APIEndpoint: String {
         return "/shots"
     }
 
-    override class func extractFind(response: Response<AnyObject, NSError>) -> AnyObject {
-        let json = JSON(data: response.data!)
-        return Shot(json)
+    override class func extractFind(response: JSON) -> AnyObject {
+        return Shot(response)
     }
 
-    override class func extractFindMany(response: Response<AnyObject, NSError>) -> [AnyObject] {
+    override class func extractFindMany(response: JSON) -> [AnyObject] {
         let array = []
-        let json = JSON(data: response.data!)
         return [Empty()]
     }
 

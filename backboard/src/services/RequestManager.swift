@@ -25,8 +25,11 @@ class RequestManager: Alamofire.Manager {
                         encoding: ParameterEncoding = .JSON,
                         headers: [String: String]? = nil) -> Promise<JSON> {
         return Promise { resolve, reject in
+            let authHeader = [
+                "Authorization": "bearer \(AuthManager.instance.userAccessToken)"
+            ]
             RequestManager.sharedManager.request(method, URLString,
-                parameters: parameters, encoding: encoding, headers: headers).responseJSON { response in
+                parameters: parameters, encoding: encoding, headers: authHeader).responseJSON { response in
                 if let data = response.data {
                     switch response.result {
                     case .Success:
