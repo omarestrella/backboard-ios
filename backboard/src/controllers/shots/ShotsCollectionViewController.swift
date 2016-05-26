@@ -48,7 +48,7 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
         let promise = store.find(Shot)
         promise.then { data in
-            log.debug("\(data)")
+            (data as! [Shot]).forEach { log.debug("\($0.title)") }
         }
 
         return promise

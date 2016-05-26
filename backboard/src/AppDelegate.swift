@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             log.debug("Couldn't create /tmp/realm for development")
         }
-        config.path = "/tmp/realm/db.realm"
+        config.fileURL = NSURL(string: "file:///tmp/realm/db.realm")
         Realm.Configuration.defaultConfiguration = config
 #endif
 

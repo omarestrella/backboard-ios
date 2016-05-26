@@ -7,10 +7,12 @@ import Foundation
 
 import Alamofire
 import SwiftyJSON
+import Realm
+import RealmSwift
 
 class Empty {}
 
-class Model: NSObject {
+@objc class Model: Object {
     class var JSONInboundMapping: [String: String] {
         return [:]
     }
@@ -21,11 +23,15 @@ class Model: NSObject {
 
     var data: JSON = JSON([:])
 
-    init(_ json: JSON, _ mappings: [String: String]) {
-        super.init()
+    convenience init(_ json: JSON, _ mappings: [String: String]) {
+        self.init()
 
         for (from, to) in mappings {
-            self.setValue(json[from].stringValue, forKeyPath: to)
+            if let string = json[from].string {
+                self.setValue(string, forKeyPath: to)
+            } else if let num = json[from].number {
+                self.setValue(num, forKeyPath: to)
+            }
         }
 
         self.data = json
@@ -48,6 +54,10 @@ class Model: NSObject {
 
     class func extractFindMany(response: JSON) -> [AnyObject] {
         return [Empty()]
+    }
+
+    func ignoredProperties() -> [String] {
+        return []
     }
 
 }

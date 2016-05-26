@@ -5,7 +5,7 @@ target 'backboard' do
     # Core
     pod 'Alamofire', '~> 3.3.1'
     pod 'PromiseKit', '~> 3.1.1'
-    pod 'RealmSwift', '~> 0.102.1'
+    pod 'RealmSwift', '~> 1.0.0'
     pod 'SwiftyJSON', '~> 2.3.1'
     pod 'SnapKit', '~> 0.21.0'
 
