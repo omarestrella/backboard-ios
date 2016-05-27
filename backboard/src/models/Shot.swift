@@ -23,6 +23,10 @@ class Shot: Model {
 
     var images = List<ShotImage>()
 
+    var teaserImage: ShotImage? {
+        return self.images.filter { $0.type == "teaser" }.first
+    }
+
     convenience init(_ json: JSON) {
         self.init(json, Shot.JSONInboundMapping)
 

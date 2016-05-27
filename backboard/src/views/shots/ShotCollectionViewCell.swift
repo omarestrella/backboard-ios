@@ -8,4 +8,8 @@ import UIKit
 
 class ShotCollectionViewCell: UICollectionViewCell {
 
+    func loadShotData(shot: Shot) {
+        log.debug("\(shot.teaserImage)")
+    }
+
 }

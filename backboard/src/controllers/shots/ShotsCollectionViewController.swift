@@ -27,7 +27,7 @@ class ShotsCollectionViewController: UICollectionViewController {
         collectionView?.dataSource = dataSource
         collectionView?.backgroundColor = Colors.White
 
-        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView?.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 
         dataSource.loadShots().then { (shots) -> Void in
             self.collectionView?.reloadData()
@@ -43,12 +43,16 @@ class ShotsCollectionViewController: UICollectionViewController {
 private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     let store = Store.instance
 
+    var shots: [Shot] = []
+
     func loadShots() -> Promise<AnyObject> {
         log.debug("Loading Shots")
 
         let promise = store.find(Shot)
-        promise.then { data in
-            (data as! [Shot]).forEach { log.debug("\($0.title)") }
+        promise.then { data -> Void in
+            if let data = data as? [Shot] {
+                self.shots.appendContentsOf(data)
+            }
         }
 
         return promise
@@ -63,13 +67,17 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     }
 
     @objc func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return shots.count
     }
 
     @objc func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
-        cell.backgroundColor = Colors.Charcoal
-        return cell
+        if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as? ShotCollectionViewCell {
+            cell.backgroundColor = Colors.Charcoal
+            cell.loadShotData(shots[indexPath.row])
+            return cell
+        }
+
+        return UICollectionViewCell()
     }
 
 }
