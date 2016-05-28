@@ -9,8 +9,7 @@ import UIKit
 import PromiseKit
 import SwiftyJSON
 
-class ShotsCollectionViewController: UICollectionViewController {
-    private let delegate = CollectionViewDelegate()
+class ShotsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let dataSource = CollectionViewDataSource()
 
     convenience init(title: String) {
@@ -23,7 +22,7 @@ class ShotsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.delegate = delegate
+        collectionView?.delegate = self
         collectionView?.dataSource = dataSource
         collectionView?.backgroundColor = Colors.White
 
@@ -34,9 +33,16 @@ class ShotsCollectionViewController: UICollectionViewController {
         }
     }
 
-}
+    // MARK: UICollectionViewDelegateFlowLayout
 
-@objc private class CollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let viewWidth = collectionView.contentSize.width
+        let size = viewWidth / 3.0
+
+        let width = size - 8
+        let height = size / (4.0 / 3.0) - 8
+        return CGSize(width: size - 8, height: height)
+    }
 
 }
 
@@ -48,7 +54,7 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func loadShots() -> Promise<AnyObject> {
         log.debug("Loading Shots")
 
-        let promise = store.find(Shot)
+        let promise = store.find(Shot.self, ["per_page": 24])
         promise.then { data -> Void in
             if let data = data as? [Shot] {
                 self.shots.appendContentsOf(data)

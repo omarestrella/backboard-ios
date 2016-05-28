@@ -28,24 +28,28 @@ class Store {
         return self.find(model, nil)
     }
 
-    func find(model: Model.Type, _ extra: AnyObject?) -> Promise<AnyObject> {
+    func find(model: Model.Type, _ params: AnyObject?) -> Promise<AnyObject> {
         var url = Store.baseURLString
-        if let argument = extra as? String {
+        var parameters: [String: AnyObject]? = nil
+
+        if let argument = params as? String {
             url = "\(Store.baseURLString)\(model.APIEndpoint)/\(argument)"
-        } else if let argument = extra as? [String: Any] {
-            // search...
         } else {
             url = "\(Store.baseURLString)\(model.APIEndpoint)"
         }
 
+        if let argument = params as? [String: AnyObject] {
+            parameters = argument
+        }
+
         return Promise { fulfill, _ in
-            let request = RequestManager.request(.GET, url).then { (json) -> Void in
+            let request = RequestManager.request(.GET, url, parameters: parameters, encoding: .URL).then { (json) -> Void in
                 var type = "find"
                 if let data = json.array {
                     type = "findMany"
                 }
 
-                log.debug("Successful store query for: \(model), \(extra)")
+                log.debug("Successful store query for: \(model), \(params)")
 
                 fulfill(Model.extract(model, response: json, type: type))
             }
