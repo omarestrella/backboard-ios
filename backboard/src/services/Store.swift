@@ -56,13 +56,4 @@ class Store {
         }
     }
 
-//    func findCardSets() -> Promise<Array<List>> {
-//        return Promise { fulfill, _ in
-//            let request = self.manager.request(Router.ReadSets())
-//            request.responseJSON { response in
-//                let lists = Model.extract(CardSet.self, response: response, type: "findMany") as! Array<List>
-//                fulfill(lists)
-//            }
-//        }
-//    }
 }

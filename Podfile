@@ -14,6 +14,7 @@ target 'backboard' do
     pod 'Ripper', '~> 0.6'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'Hue', '~> 1.1'
+    pod 'Tactile', '~> 1.2.2'
 
 
     # debugging utilities

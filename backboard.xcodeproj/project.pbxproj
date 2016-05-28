@@ -10,6 +10,7 @@
 		66DD51801CEE0AF40003DD4A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DD517F1CEE0AF40003DD4A /* QuartzCore.framework */; };
 		66DD51821CEE108A0003DD4A /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66DD51811CEE108A0003DD4A /* SafariServices.framework */; };
 		D3640793862250FF19138E70 /* Pods_backboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F265A9377A09E2288E593D /* Pods_backboard.framework */; };
+		DD5F903088E6CC4DDEEBDB38 /* ShotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */; };
 		DD5F9085DE91F7F14F0A2D95 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F954E1FE7BD9B7CA351B3 /* Colors.swift */; };
 		DD5F9143B44F890650D5DDD3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9246E32BD3AB7F8C2B60 /* AuthManager.swift */; };
 		DD5F91854893AA318AA6C33F /* ShotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F957DF89D9FE5029F342B /* ShotImageView.swift */; };
@@ -75,6 +76,7 @@
 		DD5F9C6EF29784864F74B2E3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD5F9D1165FF612998C7A732 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
+		DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailViewController.swift; sourceTree = "<group>"; };
 		DD5F9E0C1D95EE74D4150EAC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DD5F9F1F63A3FC8D80C54A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD5F9F6F959B673F283EB47D /* backboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backboardTests.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				DD5F9BD21ED607FAC0A81D9D /* ShotsCollectionViewController.swift */,
 				DD5F959AC326EE7C3B6697F0 /* ShotsNavigationController.swift */,
+				DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */,
 			);
 			path = shots;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				DD5F9FC7DF4F4C42530989CB /* ShotCollectionViewCell.swift in Sources */,
 				DD5F937B994E3489F018F494 /* ShotImage.swift in Sources */,
 				DD5F91854893AA318AA6C33F /* ShotImageView.swift in Sources */,
+				DD5F903088E6CC4DDEEBDB38 /* ShotDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

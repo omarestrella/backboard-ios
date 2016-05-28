@@ -6,13 +6,16 @@
 import Foundation
 import UIKit
 
+import Tactile
+
 class ShotCollectionViewCell: UICollectionViewCell {
     var imageView: ShotImageView? = nil
 
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        imageView = nil
+        imageView?.reset()
+        self.off()
     }
 
     func loadShotData(shot: Shot) {
@@ -25,6 +28,10 @@ class ShotCollectionViewCell: UICollectionViewCell {
                 make.width.height.equalTo(self)
             }
         }
+    }
+
+    func addTouchHandler(_ handler: (tap: UIGestureRecognizer) -> Void) {
+        self.tap(handler)
     }
 
 }

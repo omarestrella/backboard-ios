@@ -10,13 +10,18 @@ import PromiseKit
 import SwiftyJSON
 
 class ShotsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    private let dataSource = CollectionViewDataSource()
+    private var dataSource: CollectionViewDataSource!
+
+    var currentPage = 1
 
     convenience init(title: String) {
         let layout = UICollectionViewFlowLayout()
         self.init(collectionViewLayout: layout)
 
         self.title = title
+
+        dataSource = CollectionViewDataSource()
+        dataSource.controller = self
     }
 
     override func viewDidLoad() {
@@ -28,7 +33,7 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
 
         collectionView?.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 
-        dataSource.loadShots().then { (shots) -> Void in
+        dataSource.loadShots(currentPage++).then { _ -> Void in
             self.collectionView?.reloadData()
         }
     }
@@ -44,18 +49,52 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         return CGSize(width: size - 8, height: height)
     }
 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 8
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+
+    // MARK: UIScrollViewDelegate
+
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        let offset = scrollView.contentOffset.y
+
+        if height + offset >= contentHeight - 150 {
+            if !dataSource.loading {
+                dataSource.loadShots(currentPage++).then { _ -> Void in
+                    self.collectionView?.reloadData()
+                }
+            }
+        }
+    }
+
+
 }
 
 private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
     let store = Store.instance
 
     var shots: [Shot] = []
+    var loading = false
 
-    func loadShots() -> Promise<AnyObject> {
+    var controller: UICollectionViewController?
+
+    func loadShots(page: Int) -> Promise<AnyObject> {
         log.debug("Loading Shots")
 
-        let promise = store.find(Shot.self, ["per_page": 24])
+        loading = true
+        let promise = store.find(Shot.self, ["page": page, "per_page": 24])
         promise.then { data -> Void in
+            self.loading = false
             if let data = data as? [Shot] {
                 self.shots.appendContentsOf(data)
             }
@@ -78,8 +117,12 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     @objc func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as? ShotCollectionViewCell {
+            let shot = shots[indexPath.row]
             cell.backgroundColor = Colors.Charcoal
-            cell.loadShotData(shots[indexPath.row])
+            cell.loadShotData(shot)
+            cell.addTouchHandler { _ in
+                self.controller?.navigationController?.pushViewController(ShotDetailViewController(shot: shot), animated: true)
+            }
             return cell
         }
 
