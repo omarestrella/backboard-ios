@@ -27,6 +27,14 @@ class Shot: Model {
         return self.images.filter { $0.type == "teaser" }.first
     }
 
+    var detailImage: ShotImage? {
+        if let hidpi = self.images.filter({ $0.type == "hidpi" }).first {
+            return hidpi
+        }
+
+        return self.images.filter { $0.type == "normal" }.first
+    }
+
     convenience init(_ json: JSON) {
         self.init(json, Shot.JSONInboundMapping)
 

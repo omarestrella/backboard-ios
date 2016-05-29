@@ -121,7 +121,11 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             cell.backgroundColor = Colors.Charcoal
             cell.loadShotData(shot)
             cell.addTouchHandler { _ in
-                self.controller?.navigationController?.pushViewController(ShotDetailViewController(shot: shot), animated: true)
+                let navigation = self.controller?.navigationController
+                let vc = ShotDetailViewController(shot: shot)
+                dispatch_async(dispatch_get_main_queue()) {
+                    navigation?.pushViewController(vc, animated: true)
+                }
             }
             return cell
         }
