@@ -14,6 +14,8 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
 
     var currentPage = 1
 
+    var refreshControl: UIRefreshControl?
+
     convenience init(title: String) {
         let layout = UICollectionViewFlowLayout()
         self.init(collectionViewLayout: layout)
@@ -30,11 +32,26 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         collectionView?.delegate = self
         collectionView?.dataSource = dataSource
         collectionView?.backgroundColor = Colors.White
-
         collectionView?.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+
+        setupRefreshControl()
 
         dataSource.loadShots(currentPage++).then { _ -> Void in
             self.collectionView?.reloadData()
+        }
+    }
+
+    func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: Selector("startRefresh:"), forControlEvents: UIControlEvents.ValueChanged)
+        if let refreshControl = refreshControl {
+            collectionView?.addSubview(refreshControl)
+        }
+    }
+
+    func startRefresh(sender: AnyObject) {
+        dataSource.loadShots(0).then { _ -> Void in
+            self.refreshControl?.endRefreshing()
         }
     }
 

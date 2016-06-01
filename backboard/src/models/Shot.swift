@@ -10,6 +10,8 @@ import SwiftyJSON
 import RealmSwift
 
 class Shot: Model {
+    private static var cache: [Shot] = []
+
     dynamic var id = 0
 
     dynamic var title = ""
@@ -49,6 +51,7 @@ class Shot: Model {
 
     override class var JSONInboundMapping: [String: String] {
         return [
+            "id": "id",
             "title": "title",
             "description": "shotDescription",
             "width": "width",
@@ -69,9 +72,16 @@ class Shot: Model {
     override class func extractFindMany(response: JSON) -> [AnyObject] {
         let array = []
         if let data = response.array {
-            return data.map { shotData in
+            let allShots = data.map { shotData -> Shot in
                 return Shot(shotData)
             }
+
+            let currentShotIds = cache.map { $0.id }
+            let shots = allShots.filter { shot in
+                return currentShotIds.filter { $0 == shot.id }.isEmpty
+            }
+            cache.appendContentsOf(shots)
+            return shots
         }
         return [Empty()]
     }

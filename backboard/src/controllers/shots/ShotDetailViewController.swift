@@ -12,8 +12,8 @@ class ShotDetailViewController: UIViewController {
     var shot: Shot!
 
     var scrollView = UIScrollView()
-    var shotImage: ShotDetailImageView?
 
+    var shotImage: ShotDetailImageView!
     var navigationBar: UINavigationBar!
 
     convenience init(shot: Shot) {
@@ -21,12 +21,12 @@ class ShotDetailViewController: UIViewController {
 
         self.shot = shot
         self.title = shot.title
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
         view.backgroundColor = Colors.White
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
 
         navigationBar = navigationController?.navigationBar
         shotImage = ShotDetailImageView(shot: shot)
@@ -44,15 +44,13 @@ class ShotDetailViewController: UIViewController {
     }
 
     func setupImage() {
-        if let shotImage = shotImage {
-            scrollView.addSubview(shotImage)
-            shotImage.snp_makeConstraints { make in
-                make.top.equalTo(self.view)
-                make.width.equalTo(self.view)
+        scrollView.addSubview(shotImage)
+        shotImage.snp_makeConstraints { make in
+            make.top.equalTo(scrollView)
+            make.width.equalTo(scrollView)
 
-                let height = CGFloat(self.shot.height) * (self.view.frame.width / CGFloat(self.shot.width))
-                make.height.equalTo(height)
-            }
+            let height = CGFloat(self.shot.height) * (self.view.frame.width / CGFloat(self.shot.width))
+            make.height.equalTo(height)
         }
     }
 
