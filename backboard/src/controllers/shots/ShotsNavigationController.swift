@@ -15,8 +15,15 @@ class ShotsNavigationController: UINavigationController {
         self.init(rootViewController: vc)
 
         self.title = title
-        self.tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
-        self.view.backgroundColor = Colors.White
+        tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
+
+        view.backgroundColor = Colors.White
+
+        navigationBar.tintColor = Colors.White
+        navigationBar.barTintColor = Colors.Pink
+        var textAttributes: [String: AnyObject] = [:]
+        textAttributes[NSForegroundColorAttributeName] = Colors.White
+        navigationBar.titleTextAttributes = textAttributes
     }
 
 

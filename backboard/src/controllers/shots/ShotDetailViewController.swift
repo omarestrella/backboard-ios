@@ -14,6 +14,7 @@ class ShotDetailViewController: UIViewController {
     var scrollView = UIScrollView()
 
     var shotImage: ShotDetailImageView!
+    var statsBar: ShotStatsBarView!
     var navigationBar: UINavigationBar!
 
     convenience init(shot: Shot) {
@@ -30,16 +31,18 @@ class ShotDetailViewController: UIViewController {
 
         navigationBar = navigationController?.navigationBar
         shotImage = ShotDetailImageView(shot: shot)
+        statsBar = ShotStatsBarView(shot: shot)
 
-        self.setupScrollView()
-        self.setupImage()
+        setupScrollView()
+        setupImage()
+        setupStats()
     }
 
     func setupScrollView() {
         view.addSubview(scrollView)
+        scrollView.frame = view.frame
         scrollView.snp_makeConstraints { make in
-            let top = navigationBar.frame.height
-            make.top.left.bottom.right.equalTo(self.view).inset(UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0))
+            make.top.left.bottom.right.equalTo(self.view)
         }
     }
 
@@ -51,6 +54,20 @@ class ShotDetailViewController: UIViewController {
 
             let height = CGFloat(self.shot.height) * (self.view.frame.width / CGFloat(self.shot.width))
             make.height.equalTo(height)
+            scrollView.contentSize.height += height
+        }
+    }
+
+    func setupStats() {
+        scrollView.addSubview(statsBar)
+        statsBar.snp_makeConstraints { make in
+            let height = 40
+
+            make.top.equalTo(shotImage.snp_bottomMargin)
+            make.width.equalTo(scrollView)
+            make.height.equalTo(height)
+
+            scrollView.contentSize.height += CGFloat(height)
         }
     }
 

@@ -21,6 +21,7 @@
 		DD5F94320FABA5F7D62AFC4D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E0C1D95EE74D4150EAC /* Model.swift */; };
 		DD5F9574576E064C608AC4B3 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F97BA24F9A8C17E0BD3BA /* Shot.swift */; };
 		DD5F95DEC255622EF836F4C8 /* tailor.sh in Resources */ = {isa = PBXBuildFile; fileRef = DD5F94F1CAA6C3401DEAB972 /* tailor.sh */; };
+		DD5F962B62CFEA4F427360CC /* ShotStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */; };
 		DD5F96BEE3F92885DDFA8881 /* backboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9F6F959B673F283EB47D /* backboardTests.swift */; };
 		DD5F97E40F93D156EC97158C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F999B2F4C4F99564AEEBB /* Info.plist */; };
 		DD5F98BC783DB01428CED81D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9AC9A5D08E7AB3DBA025 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		DD5F99DB8E0BD87165A351F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F915A5598ACD67296E7EF /* Main.storyboard */; };
 		DD5F9A083DD6FB098C747FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9338292F8DA87B98C67A /* AppDelegate.swift */; };
 		DD5F9B0192ED3A59C66B42F4 /* .tailor.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD5F90504FDFA602E448116C /* .tailor.yml */; };
+		DD5F9BEDD3A8163A3F5AEC43 /* ShotStatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */; };
 		DD5F9C26C46C25467CB87CA1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */; };
 		DD5F9D1C6664BB5D26D92DDA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9C6EF29784864F74B2E3 /* Podfile */; };
 		DD5F9E67A378B11C0AE46148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9D06F54186E3E00A44C7 /* LaunchScreen.storyboard */; };
@@ -68,6 +70,7 @@
 		DD5F97BA24F9A8C17E0BD3BA /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		DD5F9840C1FA3339B3F01880 /* backboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F987D49CC27F4C1347C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotStatView.swift; sourceTree = "<group>"; };
 		DD5F999B2F4C4F99564AEEBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		DD5F99BA5F6EAEFE44664A4A /* backboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = backboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F9ABEBF3B7A9EF87F1A1F /* ShotDetailImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailImageView.swift; sourceTree = "<group>"; };
@@ -78,6 +81,7 @@
 		DD5F9C6EF29784864F74B2E3 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DD5F9D1165FF612998C7A732 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
+		DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotStatsBarView.swift; sourceTree = "<group>"; };
 		DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailViewController.swift; sourceTree = "<group>"; };
 		DD5F9E0C1D95EE74D4150EAC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DD5F9F1F63A3FC8D80C54A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				DD5F9BF26C2997DBE4DDFB56 /* ShotCollectionViewCell.swift */,
 				DD5F957DF89D9FE5029F342B /* ShotImageView.swift */,
 				DD5F9ABEBF3B7A9EF87F1A1F /* ShotDetailImageView.swift */,
+				DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */,
+				DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */,
 			);
 			path = shots;
 			sourceTree = "<group>";
@@ -419,6 +425,8 @@
 				DD5F91854893AA318AA6C33F /* ShotImageView.swift in Sources */,
 				DD5F903088E6CC4DDEEBDB38 /* ShotDetailViewController.swift in Sources */,
 				DD5F9F6FE2A5CDFCDAA5B3F9 /* ShotDetailImageView.swift in Sources */,
+				DD5F9BEDD3A8163A3F5AEC43 /* ShotStatsBarView.swift in Sources */,
+				DD5F962B62CFEA4F427360CC /* ShotStatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

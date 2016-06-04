@@ -30,8 +30,4 @@ class ShotCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func addTouchHandler(_ handler: (tap: UIGestureRecognizer) -> Void) {
-        self.tap(handler)
-    }
-
 }

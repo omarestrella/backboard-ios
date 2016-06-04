@@ -23,7 +23,6 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         self.title = title
 
         dataSource = CollectionViewDataSource()
-        dataSource.controller = self
     }
 
     override func viewDidLoad() {
@@ -31,7 +30,7 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
 
         collectionView?.delegate = self
         collectionView?.dataSource = dataSource
-        collectionView?.backgroundColor = Colors.White
+        collectionView?.backgroundColor = Colors.Charcoal
         collectionView?.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 
         setupRefreshControl()
@@ -78,6 +77,18 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 
+    // MARK: UICollectionViewDelegate
+
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let navigation = self.navigationController
+        let shot = dataSource.shots[indexPath.row]
+        let vc = ShotDetailViewController(shot: shot)
+        dispatch_async(dispatch_get_main_queue()) {
+            navigation?.pushViewController(vc, animated: true)
+        }
+    }
+
+
     // MARK: UIScrollViewDelegate
 
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -102,8 +113,6 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     var shots: [Shot] = []
     var loading = false
-
-    var controller: UICollectionViewController?
 
     func loadShots(page: Int) -> Promise<AnyObject> {
         log.debug("Loading Shots")
@@ -137,13 +146,6 @@ private class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
             let shot = shots[indexPath.row]
             cell.backgroundColor = Colors.Charcoal
             cell.loadShotData(shot)
-            cell.addTouchHandler { _ in
-                let navigation = self.controller?.navigationController
-                let vc = ShotDetailViewController(shot: shot)
-                dispatch_async(dispatch_get_main_queue()) {
-                    navigation?.pushViewController(vc, animated: true)
-                }
-            }
             return cell
         }
 
