@@ -9,6 +9,13 @@ class ShotImage: Model {
     dynamic var type: String = ""
     dynamic var url: String? = ""
 
+    var isAnimated: Bool {
+        if let url = url {
+            return url.containsString(".gif")
+        }
+        return false
+    }
+
     convenience init(type: String, url: String?) {
         self.init()
 

@@ -13,15 +13,17 @@ class ShotDetailViewController: UIViewController {
 
     var scrollView = UIScrollView()
 
-    var shotImage: ShotDetailImageView!
-    var statsBar: ShotStatsBarView!
     var navigationBar: UINavigationBar!
+
+    var statsBar: ShotStatsBarView!
+    var shotImage: ShotDetailImageView!
+    var headerBar: ShotDetailHeaderView!
 
     convenience init(shot: Shot) {
         self.init(nibName: nil, bundle: nil)
 
         self.shot = shot
-        self.title = shot.title
+        self.title = "Shot"
 
         view.backgroundColor = Colors.White
     }
@@ -32,8 +34,10 @@ class ShotDetailViewController: UIViewController {
         navigationBar = navigationController?.navigationBar
         shotImage = ShotDetailImageView(shot: shot)
         statsBar = ShotStatsBarView(shot: shot)
+        headerBar = ShotDetailHeaderView(shot: shot)
 
         setupScrollView()
+        setupHeader()
         setupImage()
         setupStats()
     }
@@ -46,10 +50,21 @@ class ShotDetailViewController: UIViewController {
         }
     }
 
+    func setupHeader() {
+        scrollView.addSubview(headerBar)
+        headerBar.snp_makeConstraints { make in
+            let height = 80
+            make.top.width.equalTo(scrollView)
+            make.height.equalTo(height)
+
+            scrollView.contentSize.height += CGFloat(height)
+        }
+    }
+
     func setupImage() {
         scrollView.addSubview(shotImage)
         shotImage.snp_makeConstraints { make in
-            make.top.equalTo(scrollView)
+            make.top.equalTo(headerBar.snp_bottomMargin)
             make.width.equalTo(scrollView)
 
             let height = CGFloat(self.shot.height) * (self.view.frame.width / CGFloat(self.shot.width))

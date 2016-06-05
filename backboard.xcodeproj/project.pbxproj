@@ -12,6 +12,7 @@
 		D3640793862250FF19138E70 /* Pods_backboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F265A9377A09E2288E593D /* Pods_backboard.framework */; };
 		DD5F903088E6CC4DDEEBDB38 /* ShotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */; };
 		DD5F9085DE91F7F14F0A2D95 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F954E1FE7BD9B7CA351B3 /* Colors.swift */; };
+		DD5F90AFBEBFD507D2D598DD /* ShotDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F922836A7BFAD98B3C5A4 /* ShotDetailHeaderView.swift */; };
 		DD5F9143B44F890650D5DDD3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9246E32BD3AB7F8C2B60 /* AuthManager.swift */; };
 		DD5F91854893AA318AA6C33F /* ShotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F957DF89D9FE5029F342B /* ShotImageView.swift */; };
 		DD5F919800EFBC1579C818AD /* ShotsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BD21ED607FAC0A81D9D /* ShotsCollectionViewController.swift */; };
@@ -60,6 +61,7 @@
 		DD5F90504FDFA602E448116C /* .tailor.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .tailor.yml; sourceTree = "<group>"; };
 		DD5F91048A9F75A2F24C8258 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		DD5F9148AE8DA946BDF76987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DD5F922836A7BFAD98B3C5A4 /* ShotDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailHeaderView.swift; sourceTree = "<group>"; };
 		DD5F9246E32BD3AB7F8C2B60 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		DD5F9338292F8DA87B98C67A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD5F93BBD4C80BF093492072 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				DD5F9ABEBF3B7A9EF87F1A1F /* ShotDetailImageView.swift */,
 				DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */,
 				DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */,
+				DD5F922836A7BFAD98B3C5A4 /* ShotDetailHeaderView.swift */,
 			);
 			path = shots;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				DD5F9BEDD3A8163A3F5AEC43 /* ShotStatsBarView.swift in Sources */,
 				DD5F962B62CFEA4F427360CC /* ShotStatView.swift in Sources */,
 				DD5F98918CF696C57A3BA910 /* BaseView.swift in Sources */,
+				DD5F90AFBEBFD507D2D598DD /* ShotDetailHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

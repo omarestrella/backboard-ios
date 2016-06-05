@@ -11,7 +11,7 @@ target 'backboard' do
 
     # UI/image related
     pod 'Gifu', '~> 1.0.1'
-    pod 'Ripper', '~> 0.6'
+    pod 'Kingfisher', '~> 2.4'
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'Hue', '~> 1.1'
     pod 'Tactile', '~> 1.2.2'

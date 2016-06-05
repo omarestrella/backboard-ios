@@ -17,14 +17,17 @@ class ShotStatsBarView: BaseView {
         self.shot = shot
         self.backgroundColor = Colors.Charcoal
 
-        setupViews()
+        setupStatViews()
     }
 
-    func setupViews() {
-        let testView1 = ShotStatView(type: .Views)
-        let testView2 = ShotStatView(type: .Likes)
+    func setupStatViews() {
+        let views = [
+            ShotStatView(type: .Views, shot: shot),
+            ShotStatView(type: .Likes, shot: shot),
+            ShotStatView(type: .Comments, shot: shot)
+        ]
 
-        let stackView = UIStackView(arrangedSubviews: [testView1, testView2])
+        let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .Horizontal
         stackView.distribution = .FillEqually
         stackView.alignment = .Fill

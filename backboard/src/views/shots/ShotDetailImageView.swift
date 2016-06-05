@@ -7,32 +7,40 @@ import Foundation
 import UIKit
 
 import SnapKit
-import Ripper
+import Kingfisher
+import Gifu
 
 class ShotDetailImageView: UIView {
-    let imageView = UIImageView()
+    var imageView: UIImageView!
 
     var shot: Shot!
 
-    convenience init(shot: Shot) {
-        self.init(frame: CGRectZero)
-
+    init(shot: Shot) {
         self.shot = shot
+        if shot.isAnimated {
+            imageView = AnimatedImageView()
+        } else {
+            imageView = UIImageView()
+        }
+
+        super.init(frame: CGRectZero)
 
         self.loadImage()
     }
 
     func loadImage() {
-        addSubview(imageView)
-        imageView.snp_makeConstraints { make in
-            make.width.height.equalTo(self)
+        if let url = shot.detailImage?.url, URL = NSURL(string: url) {
+            imageView.kf_setImageWithURL(URL)
         }
 
-        if let url = shot.detailImage?.url {
-            Ripper.downloader
-                .load(url: url)
-                .into(imageView)
+        addSubview(imageView)
+        imageView.snp_makeConstraints { make in
+            make.top.width.height.equalTo(self)
         }
+    }
+
+    override required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 
 }

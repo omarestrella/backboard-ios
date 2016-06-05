@@ -6,16 +6,15 @@
 import Foundation
 import UIKit
 
-import Ripper
+import Kingfisher
 
 class ShotImageView: UIImageView {
     var shot: Shot? = nil
-    var operation: Operation?
+    var task: RetrieveImageTask?
 
     func reset() {
-        operation?.cancel()
-        self.layer.opacity = 0
-        self.image = nil
+        task?.cancel()
+        image = nil
     }
 
     convenience init(shot: Shot) {
@@ -23,16 +22,8 @@ class ShotImageView: UIImageView {
 
         self.shot = shot
 
-        if let teaser = shot.teaserImage, url = teaser.url {
-            operation = Ripper.downloader.load(url: url)
-            operation?.execute { (image, error) -> Void in
-                self.layer.opacity = 0
-
-                self.image = image
-                UIView.animateWithDuration(0.5, animations: {
-                    self.layer.opacity = 1.0
-                })
-            }
+        if let teaser = shot.teaserImage, url = teaser.url, URL = NSURL(string: url) {
+            task = self.kf_setImageWithURL(URL, placeholderImage: nil)
         }
     }
 

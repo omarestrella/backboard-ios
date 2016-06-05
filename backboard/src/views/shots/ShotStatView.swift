@@ -11,12 +11,14 @@ enum StatType {
 }
 
 class ShotStatView: BaseView {
+    var shot: Shot!
     var type: StatType = .Views
 
-    init(type: StatType) {
-        super.init(frame: CGRectZero)
-
+    init(type: StatType, shot: Shot) {
         self.type = type
+        self.shot = shot
+
+        super.init(frame: CGRectZero)
 
         setupView()
     }
@@ -24,15 +26,17 @@ class ShotStatView: BaseView {
     func setupView() {
         var label = UILabel()
         label.textColor = Colors.White
+        label.font = UIFont.systemFontOfSize(14)
+
         switch type {
         case .Views:
-            label.text = "Views"
+            label.text = "\(shot.viewsCount) Views"
             break
         case .Comments:
-            label.text = "Comments"
+            label.text = "\(shot.commentsCount) Comments"
             break
         case .Likes:
-            label.text = "Likes"
+            label.text = "\(shot.likesCount) Likes"
             break
         default:
             label.text = "Default"

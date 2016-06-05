@@ -22,6 +22,7 @@ class Shot: Model {
 
     dynamic var viewsCount = 0
     dynamic var likesCount = 0
+    dynamic var commentsCount = 0
 
     var images = List<ShotImage>()
 
@@ -35,6 +36,13 @@ class Shot: Model {
         }
 
         return self.images.filter { $0.type == "normal" }.first
+    }
+
+    var isAnimated: Bool {
+        if let detailImage = detailImage {
+            return detailImage.isAnimated
+        }
+        return false
     }
 
     convenience init(_ json: JSON) {
@@ -58,6 +66,7 @@ class Shot: Model {
             "height": "height",
             "views_count": "viewsCount",
             "likes_count": "likesCount",
+            "comments_count": "commentsCount"
         ]
     }
 
