@@ -24,6 +24,7 @@ class Shot: Model {
     dynamic var likesCount = 0
     dynamic var commentsCount = 0
 
+    var user: User?
     var images = List<ShotImage>()
 
     var teaserImage: ShotImage? {
@@ -54,6 +55,10 @@ class Shot: Model {
                 return ShotImage(type: key, url: url)
             }
             self.images.appendContentsOf(models)
+        }
+
+        if let user = data["user"].dictionary {
+            self.user = User(JSON(user))
         }
     }
 

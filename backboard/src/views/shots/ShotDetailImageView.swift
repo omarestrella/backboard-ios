@@ -11,6 +11,7 @@ import Kingfisher
 import Gifu
 
 class ShotDetailImageView: UIView {
+    var placeholderImage: UIImageView!
     var imageView: UIImageView!
 
     var shot: Shot!
@@ -23,14 +24,19 @@ class ShotDetailImageView: UIView {
             imageView = UIImageView()
         }
 
+        placeholderImage = UIImageView()
+
         super.init(frame: CGRectZero)
 
         self.loadImage()
     }
 
     func loadImage() {
+        if let url = shot.teaserImage?.url, URL = NSURL(string: url) {
+            placeholderImage.kf_setImageWithURL(URL, placeholderImage: nil)
+        }
         if let url = shot.detailImage?.url, URL = NSURL(string: url) {
-            imageView.kf_setImageWithURL(URL)
+            imageView.kf_setImageWithURL(URL, placeholderImage: placeholderImage.image)
         }
 
         addSubview(imageView)

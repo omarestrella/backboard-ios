@@ -28,7 +28,9 @@ class ShotDetailHeaderView: BaseView {
         shotTitleLabel.font = UIFont.systemFontOfSize(16)
         shotTitleLabel.textColor = Colors.White
 
-        shotAuthorLabel.text = "by (Author Name Here)"
+        if let name = shot.user?.displayName {
+            shotAuthorLabel.text = "by \(name)"
+        }
         shotAuthorLabel.font = UIFont.systemFontOfSize(12)
         shotAuthorLabel.textColor = Colors.White
 
