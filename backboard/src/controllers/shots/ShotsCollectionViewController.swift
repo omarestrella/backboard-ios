@@ -60,9 +60,9 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         let viewWidth = collectionView.contentSize.width
         let size = viewWidth / 3.0
 
-        let width = size - 8
+        let width = size - 12
         let height = size / (4.0 / 3.0) - 8
-        return CGSize(width: size - 8, height: height)
+        return CGSize(width: width, height: height)
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -74,7 +74,7 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
     }
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 
     // MARK: UICollectionViewDelegate

@@ -53,7 +53,7 @@ class ShotDetailViewController: UIViewController {
     func setupHeader() {
         scrollView.addSubview(headerBar)
         headerBar.snp_makeConstraints { make in
-            let height = 80
+            let height = 70
             make.top.width.equalTo(scrollView)
             make.height.equalTo(height)
 
@@ -76,7 +76,7 @@ class ShotDetailViewController: UIViewController {
     func setupStats() {
         scrollView.addSubview(statsBar)
         statsBar.snp_makeConstraints { make in
-            let height = 40
+            let height = 35
 
             make.top.equalTo(shotImage.snp_bottomMargin)
             make.width.equalTo(scrollView)
