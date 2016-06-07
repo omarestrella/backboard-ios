@@ -15,7 +15,7 @@ class ShotsNavigationController: UINavigationController {
         self.init(rootViewController: vc)
 
         self.title = title
-        tabBarItem = UITabBarItem(title: title, image: nil, tag: 0)
+        tabBarItem = UITabBarItem(title: title, image: UIImage(named: "tab_bar_shots"), tag: 0)
 
         view.backgroundColor = Colors.White
 

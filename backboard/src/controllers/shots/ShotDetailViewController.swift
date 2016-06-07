@@ -9,11 +9,13 @@ import UIKit
 import SnapKit
 
 class ShotDetailViewController: UIViewController {
+    let scrollView = UIScrollView()
+
     var shot: Shot!
 
-    var scrollView = UIScrollView()
-
     var navigationBar: UINavigationBar!
+
+    var comments: ShotCommentsViewController!
 
     var statsBar: ShotStatsBarView!
     var shotImage: ShotDetailImageView!
@@ -22,21 +24,28 @@ class ShotDetailViewController: UIViewController {
     convenience init(shot: Shot) {
         self.init(nibName: nil, bundle: nil)
 
+        self.view.backgroundColor = Colors.White
         self.shot = shot
         self.title = "Shot"
 
-        view.backgroundColor = Colors.White
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        self.comments = ShotCommentsViewController(shot: shot)
 
         navigationBar = navigationController?.navigationBar
         shotImage = ShotDetailImageView(shot: shot)
         statsBar = ShotStatsBarView(shot: shot)
         headerBar = ShotDetailHeaderView(shot: shot)
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(headerBar)
+        scrollView.addSubview(shotImage)
+        scrollView.addSubview(statsBar)
 
         setupScrollView()
+        setupComments()
         setupHeader()
         setupImage()
         setupStats()
@@ -50,8 +59,25 @@ class ShotDetailViewController: UIViewController {
         }
     }
 
+    func setupComments() {
+        self.addChildViewController(comments)
+        scrollView.addSubview(comments.tableView)
+
+        comments.tableView.snp_makeConstraints { make in
+            make.left.right.equalTo(self.view)
+            make.top.equalTo(statsBar.snp_bottom)
+        }
+
+        let height = comments.tableView.contentSize.height
+        scrollView.contentSize.height += height
+        comments.tableView.snp_updateConstraints { make in
+            make.height.equalTo(height)
+        }
+
+        comments.didMoveToParentViewController(self)
+    }
+
     func setupHeader() {
-        scrollView.addSubview(headerBar)
         headerBar.snp_makeConstraints { make in
             let height = 70
             make.top.width.equalTo(scrollView)
@@ -62,7 +88,6 @@ class ShotDetailViewController: UIViewController {
     }
 
     func setupImage() {
-        scrollView.addSubview(shotImage)
         shotImage.snp_makeConstraints { make in
             make.top.equalTo(headerBar.snp_bottomMargin)
             make.width.equalTo(scrollView)
@@ -74,7 +99,6 @@ class ShotDetailViewController: UIViewController {
     }
 
     func setupStats() {
-        scrollView.addSubview(statsBar)
         statsBar.snp_makeConstraints { make in
             let height = 35
 
