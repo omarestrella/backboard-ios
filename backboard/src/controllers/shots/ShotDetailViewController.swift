@@ -8,7 +8,7 @@ import UIKit
 
 import SnapKit
 
-class ShotDetailViewController: UIViewController {
+class ShotDetailViewController: UIViewController, ShotCommentsDelegate {
     let scrollView = UIScrollView()
 
     var shot: Shot!
@@ -29,6 +29,7 @@ class ShotDetailViewController: UIViewController {
         self.title = "Shot"
 
         self.comments = ShotCommentsViewController(shot: shot)
+        comments.delegate = self
 
         navigationBar = navigationController?.navigationBar
         shotImage = ShotDetailImageView(shot: shot)
@@ -89,7 +90,7 @@ class ShotDetailViewController: UIViewController {
 
     func setupImage() {
         shotImage.snp_makeConstraints { make in
-            make.top.equalTo(headerBar.snp_bottomMargin)
+            make.top.equalTo(headerBar.snp_bottom)
             make.width.equalTo(scrollView)
 
             let height = CGFloat(self.shot.height) * (self.view.frame.width / CGFloat(self.shot.width))
@@ -102,12 +103,20 @@ class ShotDetailViewController: UIViewController {
         statsBar.snp_makeConstraints { make in
             let height = 35
 
-            make.top.equalTo(shotImage.snp_bottomMargin)
+            make.top.equalTo(shotImage.snp_bottom)
             make.width.equalTo(scrollView)
             make.height.equalTo(height)
 
             scrollView.contentSize.height += CGFloat(height)
         }
+    }
+
+    func commentsDidReload() {
+        let height = comments.tableView.contentSize.height
+        comments.tableView.snp_updateConstraints { make in
+            make.height.equalTo(height)
+        }
+        self.scrollView.contentSize.height += height
     }
 
 }

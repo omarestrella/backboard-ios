@@ -6,34 +6,70 @@
 import Foundation
 import UIKit
 
-class ShotCommentsViewController: UITableViewController {
-    var shot: Shot!
+import PromiseKit
 
-    let dataSource = ShotCommentsDataSource()
+class ShotCommentsViewController: UITableViewController {
+    private var dataSource: ShotCommentsDataSource!
+
+    var shot: Shot!
+    var delegate: ShotCommentsDelegate?
 
     convenience init(shot: Shot) {
         self.init(nibName: nil, bundle: nil)
 
         self.shot = shot
-        self.tableView.dataSource = dataSource
 
-        tableView.reloadData()
+        dataSource = ShotCommentsDataSource(shot)
+        tableView.dataSource = dataSource
+
+        dataSource.loadComments().then { _ -> Void in
+            self.tableView.reloadData()
+            self.delegate?.commentsDidReload()
+        }
     }
 
 }
 
-class ShotCommentsDataSource: NSObject, UITableViewDataSource {
+private class ShotCommentsDataSource: NSObject, UITableViewDataSource {
+    let store = Store.instance
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var shot: Shot
+
+    var comments: [Comment] = []
+    var loading = false
+
+    init(_ shot: Shot) {
+        self.shot = shot
+
+        super.init()
+    }
+
+    func loadComments() -> Promise<AnyObject> {
+        loading = true
+        let promise = store.find(Comment.self, "\(shot.id)/comments")
+        promise.then { data -> Void in
+            self.loading = false
+            if let data = data as? [Comment] {
+                self.comments.appendContentsOf(data)
+            }
+        }
+        return promise
+    }
+
+    @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+    @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
+}
+
+protocol ShotCommentsDelegate {
+    func commentsDidReload()
 }

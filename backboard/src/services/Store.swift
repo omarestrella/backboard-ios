@@ -40,6 +40,8 @@ class Store {
 
         if let argument = params as? [String: AnyObject] {
             parameters = argument
+        } else {
+            parameters = ["per_page": 24]
         }
 
         return Promise { fulfill, _ in

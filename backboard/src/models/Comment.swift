@@ -12,7 +12,7 @@ class Comment: Model {
 
     dynamic var body = ""
 
-    dynamic var likesCount = ""
+    dynamic var likesCount = 0
 
 
     convenience init(_ json: JSON) {
@@ -32,11 +32,14 @@ class Comment: Model {
     }
 
     override class func extractFind(response: JSON) -> AnyObject {
-        return User(response)
+        return Comment(response)
     }
 
     override class func extractFindMany(response: JSON) -> [AnyObject] {
-        return [Empty()]
+        guard let data = response.array else { return [Empty()] }
+        return data.map { json -> Comment in
+            return Comment(json)
+        }
     }
 
     override func ignoredProperties() -> [String] {
