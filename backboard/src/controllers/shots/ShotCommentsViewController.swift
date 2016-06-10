@@ -21,6 +21,11 @@ class ShotCommentsViewController: UITableViewController {
 
         dataSource = ShotCommentsDataSource(shot)
         tableView.dataSource = dataSource
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        tableView.scrollEnabled = false
+        tableView.tableFooterView = UIView()
+        tableView.registerClass(ShotCommentTableViewCell.self, forCellReuseIdentifier: "cell")
 
         dataSource.loadComments().then { _ -> Void in
             self.tableView.reloadData()
@@ -57,6 +62,15 @@ private class ShotCommentsDataSource: NSObject, UITableViewDataSource {
     }
 
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if comments.isEmpty {
+            return UITableViewCell()
+        }
+        if let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? ShotCommentTableViewCell {
+            let comment = comments[indexPath.row]
+            cell.setupCell(comment)
+            tableView.contentSize.height += cell.frame.size.height
+            return cell
+        }
         return UITableViewCell()
     }
 

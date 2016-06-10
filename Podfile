@@ -15,6 +15,7 @@ target 'backboard' do
     pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
     pod 'Hue', '~> 1.1'
     pod 'Tactile', '~> 1.2.2'
+    pod 'DTCoreText', '~> 1.6.17'
 
 
     # debugging utilities

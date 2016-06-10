@@ -35,6 +35,7 @@
 		DD5F9BEDD3A8163A3F5AEC43 /* ShotStatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */; };
 		DD5F9C26C46C25467CB87CA1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */; };
 		DD5F9D1C6664BB5D26D92DDA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9C6EF29784864F74B2E3 /* Podfile */; };
+		DD5F9DA7ADBDF5210758E3BB /* ShotCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98E5501B3C9443497F18 /* ShotCommentTableViewCell.swift */; };
 		DD5F9DE10666543B0CEBEE7B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E65F98E02D1AFEDB9A2 /* User.swift */; };
 		DD5F9E67A378B11C0AE46148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9D06F54186E3E00A44C7 /* LaunchScreen.storyboard */; };
 		DD5F9ECD3B4CA935ACA0ECE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F987D49CC27F4C1347C42 /* Info.plist */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		18E3642126D71428EFF8AE93 /* Pods-backboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backboard.release.xcconfig"; path = "Pods/Target Support Files/Pods-backboard/Pods-backboard.release.xcconfig"; sourceTree = "<group>"; };
 		22F265A9377A09E2288E593D /* Pods_backboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_backboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		662501241D07B1EB00521819 /* backboard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "backboard-Bridging-Header.h"; sourceTree = "<group>"; };
 		66DD517F1CEE0AF40003DD4A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		66DD51811CEE108A0003DD4A /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		BA1DA208C1D91194089F127B /* Pods-backboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-backboard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-backboard/Pods-backboard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		DD5F97BA24F9A8C17E0BD3BA /* Shot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		DD5F9840C1FA3339B3F01880 /* backboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = backboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5F987D49CC27F4C1347C42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		DD5F98E5501B3C9443497F18 /* ShotCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCommentTableViewCell.swift; sourceTree = "<group>"; };
 		DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotStatView.swift; sourceTree = "<group>"; };
 		DD5F999B2F4C4F99564AEEBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		DD5F99BA5F6EAEFE44664A4A /* backboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = backboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +197,7 @@
 				DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */,
 				DD5F993B30D3E798E04BABC9 /* ShotStatView.swift */,
 				DD5F922836A7BFAD98B3C5A4 /* ShotDetailHeaderView.swift */,
+				DD5F98E5501B3C9443497F18 /* ShotCommentTableViewCell.swift */,
 			);
 			path = shots;
 			sourceTree = "<group>";
@@ -265,6 +269,7 @@
 				DD5F98D0F4EF6CD9C72948BA /* utils */,
 				DD5F9E46D1F6EC7FA81023E3 /* controllers */,
 				DD5F94ED0BB4309319D8AD43 /* views */,
+				662501241D07B1EB00521819 /* backboard-Bridging-Header.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				DD5F9DE10666543B0CEBEE7B /* User.swift in Sources */,
 				DD5F9A8BCFDAC03AEFA3D7BE /* Comment.swift in Sources */,
 				DD5F9F45709EB6D25670D20B /* ShotCommentsViewController.swift in Sources */,
+				DD5F9DA7ADBDF5210758E3BB /* ShotCommentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,10 +541,12 @@
 			baseConfigurationReference = 18E3642126D71428EFF8AE93 /* Pods-backboard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = backboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.bitcreative.backboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "backboard/src/backboard-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -547,11 +555,14 @@
 			baseConfigurationReference = BA1DA208C1D91194089F127B /* Pods-backboard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = backboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "$(inherited) \"-D\" \"DEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.bitcreative.backboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "backboard/src/backboard-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
