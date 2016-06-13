@@ -6,15 +6,16 @@
 import Foundation
 import UIKit
 
-class ShotsNavigationController: BaseNavigationController {
+class SearchNavigationController: BaseNavigationController {
 
     convenience init(title: String) {
-        let vc = ShotsCollectionViewController(title: title)
+        let vc = UIViewController()
+        vc.title = title
 
         self.init(rootViewController: vc)
 
         self.title = title
-        tabBarItem = TabBarItem(title: title, imageName: "tab_bar_shots")
+        tabBarItem = TabBarItem(title: title, imageName: "tab_bar_search")
 
         view.backgroundColor = Colors.White
 
@@ -24,10 +25,4 @@ class ShotsNavigationController: BaseNavigationController {
         textAttributes[NSForegroundColorAttributeName] = Colors.White
         navigationBar.titleTextAttributes = textAttributes
     }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
 }

@@ -16,6 +16,7 @@
 		DD5F9143B44F890650D5DDD3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9246E32BD3AB7F8C2B60 /* AuthManager.swift */; };
 		DD5F91854893AA318AA6C33F /* ShotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F957DF89D9FE5029F342B /* ShotImageView.swift */; };
 		DD5F919800EFBC1579C818AD /* ShotsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BD21ED607FAC0A81D9D /* ShotsCollectionViewController.swift */; };
+		DD5F91C51E9C7D0C273FE35D /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F92D1B7BF0ADD71A79C89 /* BaseNavigationController.swift */; };
 		DD5F92DCC7F7CD14C300A8F9 /* credentials.json in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9D1165FF612998C7A732 /* credentials.json */; };
 		DD5F93192F0D6B97E9E4A0F1 /* ShotsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F959AC326EE7C3B6697F0 /* ShotsNavigationController.swift */; };
 		DD5F937B994E3489F018F494 /* ShotImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F968DC942BB0136D4F1B8 /* ShotImage.swift */; };
@@ -32,6 +33,7 @@
 		DD5F9A083DD6FB098C747FA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9338292F8DA87B98C67A /* AppDelegate.swift */; };
 		DD5F9A8BCFDAC03AEFA3D7BE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9D115BB9B47D213C05C2 /* Comment.swift */; };
 		DD5F9B0192ED3A59C66B42F4 /* .tailor.yml in Resources */ = {isa = PBXBuildFile; fileRef = DD5F90504FDFA602E448116C /* .tailor.yml */; };
+		DD5F9B037F00B9DB52E5A580 /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DCC137CE9727C0FA04E /* SearchNavigationController.swift */; };
 		DD5F9BEDD3A8163A3F5AEC43 /* ShotStatsBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */; };
 		DD5F9C26C46C25467CB87CA1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */; };
 		DD5F9D1C6664BB5D26D92DDA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9C6EF29784864F74B2E3 /* Podfile */; };
@@ -40,6 +42,7 @@
 		DD5F9E67A378B11C0AE46148 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9D06F54186E3E00A44C7 /* LaunchScreen.storyboard */; };
 		DD5F9ECD3B4CA935ACA0ECE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD5F987D49CC27F4C1347C42 /* Info.plist */; };
 		DD5F9F45709EB6D25670D20B /* ShotCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9F486157EEFB70580EC9 /* ShotCommentsViewController.swift */; };
+		DD5F9F5031D1668CBEF2736D /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9F4B1203FB4AA6247423 /* TabBarItem.swift */; };
 		DD5F9F6FE2A5CDFCDAA5B3F9 /* ShotDetailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9ABEBF3B7A9EF87F1A1F /* ShotDetailImageView.swift */; };
 		DD5F9F8E74057004725696AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BE11EEDEF197DEAF36C /* ViewController.swift */; };
 		DD5F9FC7DF4F4C42530989CB /* ShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BF26C2997DBE4DDFB56 /* ShotCollectionViewCell.swift */; };
@@ -68,6 +71,7 @@
 		DD5F9148AE8DA946BDF76987 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD5F922836A7BFAD98B3C5A4 /* ShotDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailHeaderView.swift; sourceTree = "<group>"; };
 		DD5F9246E32BD3AB7F8C2B60 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		DD5F92D1B7BF0ADD71A79C89 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		DD5F9338292F8DA87B98C67A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD5F93BBD4C80BF093492072 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		DD5F94F1CAA6C3401DEAB972 /* tailor.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = tailor.sh; sourceTree = "<group>"; };
@@ -93,11 +97,13 @@
 		DD5F9D115BB9B47D213C05C2 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DD5F9D1165FF612998C7A732 /* credentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = credentials.json; sourceTree = "<group>"; };
 		DD5F9DB656E0CDF19CB044FA /* ShotStatsBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotStatsBarView.swift; sourceTree = "<group>"; };
+		DD5F9DCC137CE9727C0FA04E /* SearchNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
 		DD5F9DCCF9B9FC195BF1E5CD /* ShotDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotDetailViewController.swift; sourceTree = "<group>"; };
 		DD5F9E0C1D95EE74D4150EAC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DD5F9E65F98E02D1AFEDB9A2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DD5F9F1F63A3FC8D80C54A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD5F9F486157EEFB70580EC9 /* ShotCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShotCommentsViewController.swift; sourceTree = "<group>"; };
+		DD5F9F4B1203FB4AA6247423 /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		DD5F9F6F959B673F283EB47D /* backboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backboardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +162,7 @@
 			children = (
 				DD5F9A0B6829874580EEB7C4 /* shots */,
 				DD5F9BE6069B2AD53A4042AD /* BaseView.swift */,
+				DD5F9F4B1203FB4AA6247423 /* TabBarItem.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -202,6 +209,14 @@
 			path = shots;
 			sourceTree = "<group>";
 		};
+		DD5F9A1B17613E7402B65DF4 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F9DCC137CE9727C0FA04E /* SearchNavigationController.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
 		DD5F9D7027AEDD21DD4971E8 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +243,8 @@
 			children = (
 				DD5F9CF3411CA07C3FA71042 /* MainTabBarController.swift */,
 				DD5F98FF943738A52F5AC5E5 /* shots */,
+				DD5F9A1B17613E7402B65DF4 /* search */,
+				DD5F92D1B7BF0ADD71A79C89 /* BaseNavigationController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -453,6 +470,9 @@
 				DD5F9A8BCFDAC03AEFA3D7BE /* Comment.swift in Sources */,
 				DD5F9F45709EB6D25670D20B /* ShotCommentsViewController.swift in Sources */,
 				DD5F9DA7ADBDF5210758E3BB /* ShotCommentTableViewCell.swift in Sources */,
+				DD5F9B037F00B9DB52E5A580 /* SearchNavigationController.swift in Sources */,
+				DD5F91C51E9C7D0C273FE35D /* BaseNavigationController.swift in Sources */,
+				DD5F9F5031D1668CBEF2736D /* TabBarItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

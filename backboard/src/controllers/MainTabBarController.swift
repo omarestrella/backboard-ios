@@ -14,14 +14,16 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         delegate = self
 
         tabBar.tintColor = Colors.White
+        tabBar.selectedImageTintColor = Colors.White
         tabBar.barTintColor = Colors.Pink
 
         setupViewControllers()
     }
 
     func setupViewControllers() {
-        let shots = ShotsNavigationController()
-        self.viewControllers = [shots]
+        let shots = ShotsNavigationController(title: "Shots")
+        let search = SearchNavigationController(title: "Search")
+        self.viewControllers = [shots, search]
     }
 
 }
