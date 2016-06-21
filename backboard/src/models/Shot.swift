@@ -12,20 +12,20 @@ import RealmSwift
 class Shot: Model {
     private static var cache: [Shot] = []
 
-    dynamic var id = 0
+    var id = 0
 
-    dynamic var title = ""
-    dynamic var shotDescription = ""
+    var title = ""
+    var shotDescription = ""
 
-    dynamic var width = 0
-    dynamic var height = 0
+    var width = 0
+    var height = 0
 
-    dynamic var viewsCount = 0
-    dynamic var likesCount = 0
-    dynamic var commentsCount = 0
+    var viewsCount = 0
+    var likesCount = 0
+    var commentsCount = 0
 
     var user: User?
-    var images = List<ShotImage>()
+    var images: [ShotImage] = []
 
     var teaserImage: ShotImage? {
         return self.images.filter { $0.type == "teaser" }.first
@@ -98,10 +98,6 @@ class Shot: Model {
             return shots
         }
         return [Empty()]
-    }
-
-    override func ignoredProperties() -> [String] {
-        return []
     }
 
 }

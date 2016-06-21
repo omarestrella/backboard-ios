@@ -7,12 +7,10 @@ import Foundation
 
 import Alamofire
 import SwiftyJSON
-import Realm
-import RealmSwift
 
 class Empty {}
 
-@objc class Model: Object {
+class Model: NSObject {
     class var JSONInboundMapping: [String: String] {
         return [:]
     }
@@ -54,10 +52,6 @@ class Empty {}
 
     class func extractFindMany(response: JSON) -> [AnyObject] {
         return [Empty()]
-    }
-
-    func ignoredProperties() -> [String] {
-        return []
     }
 
 }

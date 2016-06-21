@@ -6,8 +6,8 @@
 import Foundation
 
 class ShotImage: Model {
-    dynamic var type: String = ""
-    dynamic var url: String? = ""
+    var type: String = ""
+    var url: String? = ""
 
     var isAnimated: Bool {
         if let url = url {
@@ -22,4 +22,5 @@ class ShotImage: Model {
         self.type = type
         self.url = url
     }
+
 }

@@ -10,11 +10,11 @@ import SwiftyJSON
 import DTCoreText
 
 class Comment: Model {
-    dynamic var id = 0
+    var id = 0
 
-    dynamic var body = ""
+    var body = ""
 
-    dynamic var likesCount = 0
+    var likesCount = 0
 
     var user: User?
 
@@ -72,10 +72,6 @@ class Comment: Model {
         return data.map { json -> Comment in
             return Comment(json)
         }
-    }
-
-    override func ignoredProperties() -> [String] {
-        return []
     }
 
 }

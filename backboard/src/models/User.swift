@@ -8,13 +8,13 @@ import Foundation
 import SwiftyJSON
 
 class User: Model {
-    dynamic var id = 0
+    var id = 0
 
-    dynamic var name = ""
-    dynamic var username = ""
+    var name = ""
+    var username = ""
 
-    dynamic var htmlUrl = ""
-    dynamic var avatarUrl = ""
+    var htmlUrl = ""
+    var avatarUrl = ""
 
     var displayName: String {
         if !name.isEmpty {
@@ -50,10 +50,6 @@ class User: Model {
 
     override class func extractFindMany(response: JSON) -> [AnyObject] {
         return [Empty()]
-    }
-
-    override func ignoredProperties() -> [String] {
-        return []
     }
 
 }
