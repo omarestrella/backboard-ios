@@ -6,8 +6,6 @@
 import Foundation
 import UIKit
 
-import Tactile
-
 class ShotCollectionViewCell: UICollectionViewCell {
     var imageView: ShotImageView? = nil
 
@@ -15,7 +13,6 @@ class ShotCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
 
         imageView?.reset()
-        self.off()
     }
 
     func loadShotData(shot: Shot) {

@@ -9,7 +9,7 @@ import UIKit
 class SearchNavigationController: BaseNavigationController {
 
     convenience init(title: String) {
-        let vc = UIViewController()
+        let vc = SearchController(searchResultsController: SearchResultsController())
         vc.title = title
 
         self.init(rootViewController: vc)

@@ -52,6 +52,13 @@ class ShotDetailViewController: UIViewController, ShotCommentsDelegate {
         setupStats()
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let height = headerBar.frame.height + shotImage.frame.height + statsBar.frame.height
+        preferredContentSize = CGSize(width: 0.0, height: height)
+    }
+
     func setupScrollView() {
         view.addSubview(scrollView)
         scrollView.frame = view.frame

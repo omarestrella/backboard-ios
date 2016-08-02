@@ -22,8 +22,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
     func setupViewControllers() {
         let shots = ShotsNavigationController(title: "Shots")
+#if DEBUG
         let search = SearchNavigationController(title: "Search")
         self.viewControllers = [shots, search]
+#else
+        self.viewControllers = [shots]
+#endif
+
+        tabBar.hidden = true
     }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 import PromiseKit
 import SwiftyJSON
 
-class ShotsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ShotsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UIViewControllerPreviewingDelegate {
     private var dataSource: CollectionViewDataSource!
 
     var currentPage = 1
@@ -28,15 +28,18 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.delegate = self
-        collectionView?.dataSource = dataSource
-        collectionView?.backgroundColor = Colors.Charcoal
-        collectionView?.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        guard let collectionView = self.collectionView else { return }
 
+        collectionView.delegate = self
+        collectionView.dataSource = dataSource
+        collectionView.backgroundColor = Colors.Charcoal
+        collectionView.registerClass(ShotCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+
+        setupForceTouch()
         setupRefreshControl()
 
         dataSource.loadShots(currentPage++).then { _ -> Void in
-            self.collectionView?.reloadData()
+            collectionView.reloadData()
         }
     }
 
@@ -48,10 +51,42 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
 
+    func setupForceTouch() {
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.Available {
+            registerForPreviewingWithDelegate(self, sourceView: collectionView!)
+        } else {
+            let longPress = UILongPressGestureRecognizer(target: self, action: Selector("handleLongPress:"))
+            collectionView?.addGestureRecognizer(longPress)
+        }
+    }
+
+    func handleLongPress(sender: AnyObject) {
+        log.debug("Long press shot cell")
+    }
+
     func startRefresh(sender: AnyObject) {
         dataSource.loadShots(0).then { _ -> Void in
             self.refreshControl?.endRefreshing()
         }
+    }
+
+    // MARK: UIViewControllerPreviewingDelegate
+
+    func previewingContext(previewingContext: UIViewControllerPreviewing!, viewControllerForLocation location: CGPoint) -> UIViewController! {
+        guard let indexPath = collectionView?.indexPathForItemAtPoint(location) else { return nil }
+        guard let cell = collectionView?.cellForItemAtIndexPath(indexPath) else { return nil }
+
+        let shot = dataSource.shots[indexPath.row]
+
+        let vc = ShotDetailViewController(shot: shot)
+        vc.preferredContentSize = CGSize(width: 0.0, height: 386.5)
+
+        previewingContext.sourceRect = cell.frame
+        return vc
+    }
+
+    func previewingContext(previewingContext: UIViewControllerPreviewing!, commitViewController viewControllerToCommit: UIViewController!) {
+        showViewController(viewControllerToCommit, sender: self)
     }
 
     // MARK: UICollectionViewDelegateFlowLayout

@@ -8,7 +8,6 @@ import UIKit
 
 import SnapKit
 import Kingfisher
-import Gifu
 
 class ShotDetailImageView: UIView {
     var placeholderImage: UIImageView!
