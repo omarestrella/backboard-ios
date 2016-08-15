@@ -33,6 +33,12 @@ class ShotCommentsViewController: UITableViewController {
         }
     }
 
+    override func tableView(tableView: UITableView!, willDisplayCell cell: UITableViewCell!, forRowAtIndexPath indexPath: NSIndexPath!) {
+        cell.separatorInset = UIEdgeInsetsZero
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
+    }
+
 }
 
 private class ShotCommentsDataSource: NSObject, UITableViewDataSource {

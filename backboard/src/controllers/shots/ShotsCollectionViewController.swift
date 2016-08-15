@@ -43,6 +43,7 @@ class ShotsCollectionViewController: UICollectionViewController, UICollectionVie
         }
     }
 
+
     func setupRefreshControl() {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: Selector("startRefresh:"), forControlEvents: UIControlEvents.ValueChanged)

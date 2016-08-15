@@ -27,6 +27,11 @@ class ViewController: UIViewController, AuthManagerDelegate {
         setupButton()
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+
+
     func setupButton() {
         self.view.addSubview(signinButton)
         signinButton.backgroundColor = Colors.White

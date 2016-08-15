@@ -13,6 +13,7 @@ class ShotsNavigationController: BaseNavigationController {
 
         self.init(rootViewController: vc)
 
+        self.hidesBarsOnSwipe = true
         self.title = title
         tabBarItem = TabBarItem(title: title, imageName: "tab_bar_shots")
 
@@ -28,6 +29,18 @@ class ShotsNavigationController: BaseNavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationBar.barStyle = UIBarStyle.Black
+        navigationBar.translucent = false
+
+        self.barHideOnSwipeGestureRecognizer.addTarget(self, action: Selector("onSwipe:"))
+    }
+
+    func onSwipe(recognizer: UISwipeGestureRecognizer) {
+        let shouldHideStatusBar = navigationBar.frame.origin.y < 0
+        UIView.animateWithDuration(0.2, animations: {
+
+        })
     }
 
 }
